@@ -1,4 +1,4 @@
-# 🚗 Sri Lanka Vehicle Price Prediction System
+# 🚗 Sri Lanka Vehicle Price Prediction System (Academic Purpose)
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)](https://streamlit.io)
@@ -240,15 +240,10 @@ joblib>=1.2.0
 4. **Push to branch** (`git push origin feature/AmazingFeature`)
 5. **Open Pull Request**
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 👨‍💻 Author
 
 **Your Name** - Machine Learning Engineer  
-📧 Email: your.email@example.com  
-🔗 LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)
+📧 Email: thimiradeshakashan0220@gmail.com
 
 ## 🙏 Acknowledgments
 
