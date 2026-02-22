@@ -7,6 +7,93 @@ import os
 # Set page config
 st.set_page_config(page_title="Sri Lanka Vehicle Price Predictor", page_icon="🚗")
 
+# Custom CSS for attractive UI
+st.markdown("""
+    <style>
+    /* Background image with gradient overlay */
+    .stApp {
+        background: linear-gradient(180deg, rgba(102, 126, 234, 0.45) 0%, rgba(118, 75, 162, 0.75) 50%, rgba(0, 0, 0, 0.6) 100%),
+                    url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    
+    /* Main container styling - semi-transparent white */
+    .main .block-container {
+        background-color: rgba(255, 255, 255, 0.65);
+        padding: 2.5rem;
+        border-radius: 15px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.4);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        max-width: 1000px;
+        margin: auto;
+    }
+    
+    /* Title styling */
+    h1 {
+        color: #1e3a8a;
+        text-align: center;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Input fields */
+    .stSelectbox > div > div,
+    .stNumberInput > div > div > input,
+    .stTextInput > div > div > input {
+        background-color: white !important;
+        color: #1e293b !important;
+        border: 2px solid rgba(100, 116, 139, 0.3) !important;
+        border-radius: 8px !important;
+    }
+    
+    /* Number input container background */
+    .stNumberInput > div {
+        background-color: white !important;
+        border-radius: 8px !important;
+    }
+    
+    /* Button styling */
+    .stButton > button {
+        width: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-weight: 600;
+        padding: 0.75rem 2rem;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0 4px 15px 0 rgba(102, 126, 234, 0.5);
+        transition: all 0.3s ease;
+    }
+    
+    .stButton > button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px 0 rgba(102, 126, 234, 0.7);
+    }
+    
+    /* Column styling */
+    div[data-testid="column"] {
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 0.5rem 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Label styling - WHITE */
+    label {
+        font-weight: 600;
+        color: white !important;
+        font-size: 0.95rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 @st.cache_resource
 def load_assets():
     model_path = 'models/lgbm_model.pkl'
@@ -94,8 +181,47 @@ else:
             prediction_log = model.predict(input_df)
             final_price = np.expm1(prediction_log)[0]
             
-            st.success(f"Estimated Market Value: LKR {final_price:,.2f}")
-            st.info("Note: Prices are based on current market trends and model accuracy.")
+            st.markdown("<br>", unsafe_allow_html=True)
+            st.markdown(f"""
+                <div style='background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                            padding: 2.5rem; 
+                            border-radius: 18px; 
+                            text-align: center;
+                            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.6);
+                            border: 2px solid rgba(255, 255, 255, 0.2);
+                            margin-top: 1rem;'>
+                    <div style='background: rgba(255, 255, 255, 0.15); 
+                                padding: 0.5rem 1.5rem; 
+                                border-radius: 50px; 
+                                display: inline-block; 
+                                margin-bottom: 1rem;'>
+                        <span style='color: white; 
+                                     font-size: 0.95rem; 
+                                     font-weight: 600; 
+                                     letter-spacing: 1.5px;'>
+                            💰 ESTIMATED MARKET VALUE
+                        </span>
+                    </div>
+                    <h1 style='color: #fcd34d; 
+                               margin: 1rem 0; 
+                               font-size: 3rem; 
+                               font-weight: 800; 
+                               text-shadow: 2px 2px 4px rgba(0,0,0,0.2);'>
+                        LKR {final_price:,.2f}
+                    </h1>
+                    <div style='height: 2px; 
+                                width: 80px; 
+                                background: rgba(255, 255, 255, 0.5); 
+                                margin: 1rem auto;'>
+                    </div>
+                    <p style='color: #e0e7ff; 
+                              margin: 0; 
+                              font-size: 0.95rem; 
+                              font-weight: 400;'>
+                        📊 Based on current market trends and ML analysis
+                    </p>
+                </div>
+            """, unsafe_allow_html=True)
             
         except Exception as e:
             st.error(f"Error making prediction: {e}")
