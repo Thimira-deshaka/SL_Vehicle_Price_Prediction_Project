@@ -19,9 +19,11 @@ A comprehensive machine learning solution for predicting used vehicle prices in 
 ## 🎯 Demo
 
 ### Web Application
+
 ![Vehicle Price Predictor](https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80)
 
 ### Key Capabilities
+
 - **Price Prediction**: Enter vehicle details and get instant market value estimates
 - **Data Visualization**: Explore price distributions, correlations, and market trends
 - **Model Insights**: Understand which features influence pricing decisions
@@ -56,19 +58,22 @@ vehicle_price_prediction/
 ## 🚀 Quick Start
 
 ### Prerequisites
-- **Python 3.8+** 
+
+- **Python 3.8+**
 - **Git** (for version control)
 - **4GB+ RAM** (recommended for model training)
 
 ### 🔧 Installation
 
 1. **Clone the Repository**
+
    ```bash
    git clone <repository-url>
    cd vehicle_price_prediction
    ```
 
 2. **Create Virtual Environment**
+
    ```bash
    # Windows
    python -m venv venv
@@ -80,6 +85,7 @@ vehicle_price_prediction/
    ```
 
 3. **Install Dependencies**
+
    ```bash
    pip install -r requirements.txt
    ```
@@ -92,6 +98,7 @@ vehicle_price_prediction/
 ### 📊 Dataset Setup
 
 Ensure your dataset (`sri_lanka_car_price_dataset.csv`) is placed in the `data/` folder with the following columns:
+
 - `Brand`, `Model`, `YOM` (Year of Manufacture)
 - `Engine (cc)`, `Gear`, `Fuel Type`
 - `Millage(KM)`, `Town`, `Condition`
@@ -100,16 +107,20 @@ Ensure your dataset (`sri_lanka_car_price_dataset.csv`) is placed in the `data/`
 ## 🏃‍♂️ Usage
 
 ### 1. **Train the Model**
+
 ```bash
 python main.py
 ```
+
 This will:
+
 - ✅ Load and preprocess the dataset
 - ✅ Train the LightGBM model
 - ✅ Generate SHAP explanations
 - ✅ Save models to `models/` folder
 
 **Expected Output:**
+
 ```
 Dataset loaded: (X, Y) samples
 Model trained successfully!
@@ -118,15 +129,18 @@ Encoders saved: models/encoders.pkl
 ```
 
 ### 2. **Launch Web Application**
+
 ```bash
 streamlit run app.py
 ```
 
 Navigate to `http://localhost:8501` in your browser to access:
+
 - 🔮 **Price Prediction Tab**: Interactive vehicle price estimator
 - 📊 **EDA Tab**: Data exploration and visualizations
 
 ### 3. **Explore Data Analysis**
+
 ```bash
 # Open Jupyter Notebook
 jupyter notebook EDA.ipynb
@@ -134,15 +148,16 @@ jupyter notebook EDA.ipynb
 
 ## 📈 Model Performance
 
-| Metric | Value |
-|--------|-------|
-| **Algorithm** | LightGBM Gradient Boosting |
-| **Features** | 11 engineered features |
-| **R² Score** | 0.85+ |
-| **RMSE** | <500K LKR |
-| **Training Time** | <2 minutes |
+| Metric            | Value                      |
+| ----------------- | -------------------------- |
+| **Algorithm**     | LightGBM Gradient Boosting |
+| **Features**      | 11 engineered features     |
+| **R² Score**      | 0.85+                      |
+| **RMSE**          | <500K LKR                  |
+| **Training Time** | <2 minutes                 |
 
 ### Key Features Influencing Price:
+
 1. 🗓️ **Vehicle Age** - Most significant factor
 2. 🏭 **Brand** - Premium vs. economy brands
 3. ⚙️ **Engine Capacity** - Power and performance
@@ -152,12 +167,14 @@ jupyter notebook EDA.ipynb
 ## 🎨 Web Interface Features
 
 ### Modern Design Elements
+
 - **Glassmorphism UI** - Semi-transparent cards with backdrop blur
 - **Gradient Backgrounds** - Dynamic color schemes
 - **Responsive Layout** - Works on desktop and mobile
 - **Interactive Charts** - Hover effects and animations
 
 ### Prediction Interface
+
 - **Smart Defaults** - Pre-filled reasonable values
 - **Real-time Validation** - Input error handling
 - **Confidence Indicators** - Model certainty metrics
@@ -166,25 +183,29 @@ jupyter notebook EDA.ipynb
 ## 🔍 Data Insights
 
 ### Market Analysis Features
+
 - **Price Distribution Analysis** - Histogram with KDE curves
 - **Correlation Heatmaps** - Feature relationship mapping
 - **Brand Performance** - Average pricing by manufacturer
 - **Temporal Trends** - Year-over-year price changes
 
 ### Model Interpretability
+
 - **SHAP Summary Plots** - Global feature importance
-- **Individual Predictions** - Per-sample explanations  
+- **Individual Predictions** - Per-sample explanations
 - **Feature Contribution** - Positive/negative impact analysis
 
 ## 🛠️ Development
 
 ### Adding New Features
+
 1. Update `src/preprocessing.py` for new data transformations
 2. Modify `src/train.py` to include additional features
 3. Retrain model using `python main.py`
 4. Update UI in `app.py` for new input fields
 
 ### Model Tuning
+
 ```python
 # In src/train.py, modify LightGBM parameters:
 lgb_params = {
