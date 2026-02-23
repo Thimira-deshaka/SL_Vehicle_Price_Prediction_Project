@@ -9,12 +9,12 @@ A comprehensive machine learning solution for predicting used vehicle prices in 
 
 ## ✨ Features
 
-- 🎯 **Accurate Price Predictions** - LightGBM model with SHAP explainability
-- 📊 **Interactive Dashboard** - Beautiful Streamlit web interface with glassmorphism design
-- 🔍 **Comprehensive EDA** - Detailed exploratory data analysis with visualizations
-- 🧠 **Model Interpretability** - SHAP values and feature importance analysis
-- 📈 **Performance Metrics** - Model evaluation with R², RMSE, and prediction plots
-- 🎨 **Modern UI** - Gradient backgrounds, responsive design, and intuitive controls
+- 🎯 **Accurate Price Predictions** - LightGBM model with individual SHAP explanations
+- 📊 **Multifaceted Dashboard** - Six specialized tabs: Prediction, Market Overview, Brand Analysis, Feature Analysis, Model Performance, and SHAP Explainability
+- 🔍 **Integrated EDA** - Comprehensive market insights and brand performance visualizations directly in the app
+- 🧠 **Deep Interpretability** - Global SHAP summary plots and local prediction waterfalls
+- 📈 **Performance Metrics** - Real-time model evaluation with R², RMSE, and residual analysis
+- 🎨 **Modern UI** - Responsive design with interactive Plotly charts and glassmorphism elements
 
 ## 🎯 Demo
 
@@ -41,9 +41,10 @@ vehicle_price_prediction/
 │
 ├── 📂 src/                      # Source code modules
 │   ├── 📄 __init__.py
-│   ├── 🔧 preprocessing.py      # Data preprocessing & feature engineering
+│   ├── 🔧 data_processor.py     # Main data cleaning & feature engineering
+│   ├── 🔧 preprocessing.py      # Legacy preprocessing utilities
 │   ├── 🤖 train.py              # Model training & evaluation
-│   └── 🔍 explain.py            # Model interpretability & SHAP analysis
+│   └── 🔍 explain.py            # SHAP model interpretability wrappers
 │
 ├── 📂 data/                     # Dataset storage
 │   └── 📊 sri_lanka_car_price_dataset.csv
@@ -134,10 +135,14 @@ Encoders saved: models/encoders.pkl
 streamlit run app.py
 ```
 
-Navigate to `http://localhost:8501` in your browser to access:
+Navigate to `http://localhost:8501` in your browser to access the dashboard with 6 dedicated tabs:
 
-- 🔮 **Price Prediction Tab**: Interactive vehicle price estimator
-- 📊 **EDA Tab**: Data exploration and visualizations
+- 🔮 **Price Prediction**: Interactive estimator with integrated SHAP waterfall plots for transparency.
+- 📈 **Market Overview**: Distribution analysis and price trends.
+- 🏭 **Brand Analysis**: Manufacturer-specific pricing insights.
+- 🔍 **Feature Analysis**: Correlation heatmaps and feature impact.
+- 📊 **Model Performance**: R², RMSE, and residual diagnostic plots.
+- 🧠 **SHAP Explainability**: Global feature importance and detailed model interpretability.
 
 ### 3. **Explore Data Analysis**
 
@@ -199,7 +204,7 @@ jupyter notebook EDA.ipynb
 
 ### Adding New Features
 
-1. Update `src/preprocessing.py` for new data transformations
+1. Update `src/data_processor.py` for new data transformations and cleaning
 2. Modify `src/train.py` to include additional features
 3. Retrain model using `python main.py`
 4. Update UI in `app.py` for new input fields
@@ -229,6 +234,7 @@ shap>=0.41.0
 streamlit>=1.28.0
 matplotlib>=3.5.0
 seaborn>=0.12.0
+plotly>=5.10.0
 joblib>=1.2.0
 ```
 
