@@ -242,7 +242,7 @@ joblib>=1.2.0
 
 ## 👨‍💻 Author
 
-**Your Name** - Machine Learning Engineer  
+**Thimira Kalupahana** - Machine Learning Engineer  
 📧 Email: thimiradeshakashan0220@gmail.com
 
 ## 🙏 Acknowledgments
